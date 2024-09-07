@@ -34,7 +34,7 @@ DESTINATION_BUCKET = "tredence-backup-bucket/bharat"
 default_args = {
     "owner": "airflow",  # Owner of the DAG
     "start_date": days_ago(1),
-    "email": ["burhanuddin@mentorskool.com"],  # List of emails to send notifications
+    "email": ["bharat@tredence.com"],  # List of emails to send notifications
     "email_on_retry": True,  # Send email on retry
     "email_on_failure": True,  # Send email on failure
     "retries": 2,  # Number of retries
@@ -54,7 +54,7 @@ with DAG(
     default_args=default_args,
     schedule_interval="30 4 * * 1-5",  # we want it to run on weekdays at 10 AM IST
     catchup=False,
-    tags=['task-groups']
+    tags=['task-groups','bharat']
 ) as dag:
 
     # Incremental Backup Task Group
@@ -93,13 +93,13 @@ with DAG(
     AGGREGATED_VIEW_BUCKET = "tredence-aggregated-view-bucket/bharat"
     late_payment_aggregated_view_task = PythonOperator(
         task_id=f"late_payment_aggregated_view",
-        python_callable=late_payment_aggregated_view,
+        python_callable=late_payment_aggregated_view_task,
         op_args=[DESTINATION_BUCKET, AGGREGATED_VIEW_BUCKET],
     )
 
     billing_amount_aggregated_view_task = PythonOperator(
         task_id=f"billing_amount_aggregated_view",
-        python_callable=billing_amount_aggregated_view,
+        python_callable=billing_amount_aggregated_view_task,
         op_args=[DESTINATION_BUCKET, AGGREGATED_VIEW_BUCKET],
     )
 
