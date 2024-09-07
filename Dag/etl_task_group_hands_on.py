@@ -5,8 +5,8 @@ import logging
 from airflow.models import Variable
 from scripts.bharat_kanwar.incremental_backup import incremental_etl
 from scripts.bharat_kanwar.etl_functions import (
-    late_payment_aggregated_view_task,
-    billing_amount_aggregated_view_task,
+    late_payment_aggregated_view,
+    billing_amount_aggregated_view,
 )
 from airflow.utils.task_group import TaskGroup
 
@@ -93,13 +93,13 @@ with DAG(
     AGGREGATED_VIEW_BUCKET = "tredence-aggregated-view-bucket/bharat"
     late_payment_aggregated_view_task = PythonOperator(
         task_id=f"late_payment_aggregated_view",
-        python_callable=late_payment_aggregated_view_task,
+        python_callable=late_payment_aggregated_view,
         op_args=[DESTINATION_BUCKET, AGGREGATED_VIEW_BUCKET],
     )
 
     billing_amount_aggregated_view_task = PythonOperator(
         task_id=f"billing_amount_aggregated_view",
-        python_callable=billing_amount_aggregated_view_task,
+        python_callable=billing_amount_aggregated_view,
         op_args=[DESTINATION_BUCKET, AGGREGATED_VIEW_BUCKET],
     )
 
