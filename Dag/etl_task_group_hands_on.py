@@ -5,8 +5,8 @@ import logging
 from airflow.models import Variable
 from scripts.bharat_kanwar.incremental_backup import incremental_etl
 from scripts.bharat_kanwar.etl_functions import (
-    late_payment_aggregated_view,
-    billing_amount_aggregated_view,
+    late_payment_aggregated_view_task,
+    billing_amount_aggregated_view_task,
 )
 from airflow.utils.task_group import TaskGroup
 
