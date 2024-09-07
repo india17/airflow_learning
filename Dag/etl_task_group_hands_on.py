@@ -58,7 +58,7 @@ with DAG(
 ) as dag:
 
     # Incremental Backup Task Group
-    with TaskGroup("incremental_backup") as incremental_backup:
+    with TaskGroup("incremental_backup",tooltip="Tasks for incremental backup") as incremental_backup:
         billing = PythonOperator(
             task_id="process_billing",
             python_callable=incremental_etl,
