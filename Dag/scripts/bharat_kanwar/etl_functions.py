@@ -2,7 +2,7 @@ import logging
 from datetime import datetime
 import pandas as pd
 
-from scripts.s3_functions import upload_data_to_s3, fetch_all_files_from_s3
+from scripts.bharat_kanwar.s3_functions import upload_data_to_s3, fetch_all_files_from_s3
 # from s3_functions import upload_data_to_s3, fetch_all_files_from_s3
 
 
@@ -11,7 +11,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def late_payment_aggregated_view_task(destination_path:str, aggregated_view_path: str):
+def late_payment_aggregated_view(destination_path:str, aggregated_view_path: str):
     try:
         billing_df = fetch_all_files_from_s3(destination_path, "billing")
         billing_df["updated_at"] = pd.to_datetime(billing_df["updated_at"])
@@ -75,7 +75,7 @@ def late_payment_aggregated_view_task(destination_path:str, aggregated_view_path
         )
 
 
-def billing_amount_aggregated_view_task(destination_path:str, s3_key: str):
+def billing_amount_aggregated_view(destination_path:str, s3_key: str):
     try:
         billing_df = fetch_all_files_from_s3(destination_path, "billing")
         billing_df["updated_at"] = pd.to_datetime(billing_df["updated_at"])

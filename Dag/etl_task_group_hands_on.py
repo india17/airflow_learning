@@ -6,7 +6,7 @@ from airflow.models import Variable
 from scripts.bharat_kanwar.incremental_backup import incremental_etl
 from scripts.bharat_kanwar.etl_functions import (
     late_payment_aggregated_view,
-    billing_amount_aggregated_view,
+    billing_amount_aggregated_view
 )
 from airflow.utils.task_group import TaskGroup
 
@@ -34,7 +34,7 @@ DESTINATION_BUCKET = "tredence-backup-bucket/bharat"
 default_args = {
     "owner": "airflow",  # Owner of the DAG
     "start_date": days_ago(1),
-    "email": ["bharat@tredence.com"],  # List of emails to send notifications
+    "email": ["bharat.kanwar@tredence.com"],  # List of emails to send notifications
     "email_on_retry": True,  # Send email on retry
     "email_on_failure": True,  # Send email on failure
     "retries": 2,  # Number of retries
