@@ -1,5 +1,5 @@
 import logging
-from scripts.db_functions import (
+from scripts.bharat_kanwar.db_functions import (
     get_pg_connection,
     get_last_run_date,
     fetch_new_data,
@@ -7,7 +7,7 @@ from scripts.db_functions import (
     insert_last_run_date,
 )
 from datetime import datetime
-from scripts.s3_functions import upload_data_to_s3
+from scripts.bharat_kanwar.s3_functions import upload_data_to_s3
 import pytz
 
 # Set up logging

@@ -27,7 +27,7 @@ def get_pg_connection(postgressql_congif):
 
 def get_last_run_date(conn, table_name):
     try:
-        query = f"SELECT last_run_date FROM bharat_kanwar_etl_last_run_metadata WHERE table_name = '{table_name}'"
+        query = f"SELECT last_run_date FROM etl_last_run_metadata WHERE table_name = '{table_name}'"
         cursor = conn.cursor()
         cursor.execute(query)
         result = cursor.fetchone()
@@ -53,7 +53,7 @@ def fetch_new_data(conn, table_name, last_run_date):
 def update_last_run_date(conn, updated_last_run_date, table_name):
     try:
         query = f"""
-        UPDATE bharat_kanwar_etl_last_run_metadata
+        UPDATE etl_last_run_metadata
         SET last_run_date = %s
         WHERE table_name = %s
         """
@@ -70,7 +70,7 @@ def update_last_run_date(conn, updated_last_run_date, table_name):
 def insert_last_run_date(conn, updated_last_run_date, table_name):
     try:
         query = f"""
-         INSERT INTO bharat_kanwar_etl_last_run_metadata (table_name, last_run_date)
+         INSERT INTO etl_last_run_metadata (table_name, last_run_date)
         VALUES (%s, %s)
         """
         cursor = conn.cursor()
