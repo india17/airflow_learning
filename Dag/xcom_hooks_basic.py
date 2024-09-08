@@ -6,7 +6,8 @@ import logging
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 from airflow.operators.python import PythonOperator
 from airflow.utils.task_group import TaskGroup
-from airflow.providers.amazon.aws.transfers.sql_to_s3 import SQLToS3Operator
+from airflow.providers.amazon.aws.transfers.sql_to_s3 import SqlToS3Operator
+
 
 
 logging.basicConfig(level=logging.INFO)
