@@ -87,7 +87,7 @@ def fetch_data_and_upload_to_s3(table, **kwargs):
     # Upload to S3
     s3_hook = S3Hook(aws_conn_id="aws_default")
     s3_key = (
-        f"burhan/{table}/{table}_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.csv"
+        f"bharat/{table}/{table}_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.csv"
     )
 
     s3_hook.load_string(
