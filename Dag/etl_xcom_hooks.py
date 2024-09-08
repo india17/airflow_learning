@@ -21,7 +21,7 @@ default_args = {
     "retries": 2,
     "retry_delay": timedelta(seconds=60),
     "catchup": True,
-    "email": ["bharat.kanwar@tredence.com"],
+    "email": ["burhanuddin@mentorskool.com", "amit@mentorskool.com"],
     "email_on_retry": True,
     "email_on_failure": True,
 }
