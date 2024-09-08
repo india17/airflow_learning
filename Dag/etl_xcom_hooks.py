@@ -37,14 +37,14 @@ def fetch_and_update_last_run_date(hook, table: str):
 
     # Check if a record exists
     sql_check = (
-        "SELECT last_run_date FROM bharat_kanwar_etl_last_run_metadata WHERE table_name = %s;"
+        "SELECT last_run_date FROM etl_last_run_metadata_burhan WHERE table_name = %s;"
     )
     result = hook.get_first(sql_check, parameters=(table,))
 
     if result:
         # Record exists, perform UPDATE
         sql_update = """
-            UPDATE bharat_kanwar_etl_last_run_metadata
+            UPDATE etl_last_run_metadata_burhan
             SET last_run_date = %s
             WHERE table_name = %s;
         """
@@ -53,7 +53,7 @@ def fetch_and_update_last_run_date(hook, table: str):
     else:
         # Record does not exist, perform INSERT
         sql_insert = """
-            INSERT INTO bharat_kanwar_etl_last_run_metadata (table_name, last_run_date)
+            INSERT INTO etl_last_run_metadata_burhan (table_name, last_run_date)
             VALUES (%s, %s);
         """
         last_run_date = datetime(1970, 1, 1)
