@@ -1,0 +1,11 @@
+pandas
+boto3
+apache-airflow-providers-amazon
+apache-airflow-providers-postgres
+psycopg2-binary
+pendulum
+apache-airflow-providers-snowflake
+apache-airflow-providers-slack
+snowflake-connector-python
+snowflake-sqlalchemy
+apache-airflow-providers-common-sql
