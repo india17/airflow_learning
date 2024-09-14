@@ -8,4 +8,6 @@ apache-airflow-providers-snowflake
 apache-airflow-providers-slack
 snowflake-connector-python
 snowflake-sqlalchemy
+apache-airflow-providers-common-compat
 apache-airflow-providers-common-sql
+pyarrow
